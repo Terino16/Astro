@@ -1,24 +1,12 @@
 import { useState } from 'react'
 import stars from './animation/stars.json'
-import Lottie from 'react-lottie';
-import Panditji from './assets/panditji.webp'
+import Lottie from 'lottie-react'
 import Form from './components/Form'
 import { useSpeechSynthesis } from "react-speech-kit";
 import axios from "axios";
 function App() {
   const { speak } = useSpeechSynthesis();
-
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: stars,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  };
- 
   const [desc, setDesc]=useState('');
-
 
   var audio = new Audio("./src/assets/Audio.mp3")
   
@@ -47,11 +35,7 @@ function App() {
     <>
     <div className='grid grid-flow-row gap-1 place-items-center bg-gradient-to-b from-red-500 via-blue-500 to-green-500'>
       <div className='flex place-items-center justify-around'>
-      <Lottie 
-	    options={defaultOptions}
-        height={400}
-        width={400}
-      />
+      <Lottie animationData={stars} width="300px"/> 
       </div>
     <div className="grid justify-items-center gap-4 place-items-center  backdrop-blur-md backdrop-opacity-75 bg-astrobanner bg-no-repeat bg-center h-screen relative "  >
      <Form onSubmit={getZodiac}/>
